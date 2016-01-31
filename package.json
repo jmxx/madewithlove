@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "^6.3.1",
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylus": "^2.2.0",
+    "lost": "^6.7.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "browser-sync": "^2.11.1",
+    "jquery": "^2.2.0",
+    "poststylus": "^0.2.3"
+  }
+}

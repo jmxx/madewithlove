@@ -1,0 +1,10 @@
+/node_modules
+/public/css
+/public/js
+/storage/debugbar
+/vendor
+
+composer.lock
+Homestead.yaml
+Homestead.json
+.env
