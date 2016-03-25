@@ -1,4 +1,4 @@
-<?php namespace Mwl;
+<?php namespace Mwl\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

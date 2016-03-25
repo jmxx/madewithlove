@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model'  => Mwl\User::class,
+        'model'  => Mwl\Models\User::class,
         'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
