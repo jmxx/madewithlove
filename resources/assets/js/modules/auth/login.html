@@ -1,0 +1,19 @@
+<div layout layout-fill layout-align="center center">
+  <form action="" md-whiteframe="3" class="Login Form">
+    <div>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Email or Username</label>
+        <input ng-model="login.username">
+      </md-input-container>
+      <md-input-container class="md-block" md-no-float flex-gt-sm>
+        <label>Password</label>
+        <input type="password" ng-model="login.password">
+      </md-input-container>
+      <!-- <div layout="column" layout-fill layout-align="center center">
+        <md-button ng-hide="login.loadingButton" class="md-raised md-primary animated" ng-click="login.submit()">Entrar</md-button>
+        <md-progress-circular md-mode="indeterminate" ng-hide="!login.loadingButton"></md-progress-circular>
+      </div> -->
+      <mwl-button ng-click="login.submit" loading="login.loadingButton">Entrar</mwl-button>
+    </div>
+  </form>
+</div>
