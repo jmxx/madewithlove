@@ -1,0 +1,32 @@
+.Section
+  background: #fff
+  display: block
+  height: 100vh
+  position: relative
+  z-index: 0
+  clearfix()
+  &::after
+    background: #fff /* fallback for old browsers */
+    bottom:0
+    content: ''
+    display: none
+    opacity: 0.5
+    position: absolute
+    top:0
+    width: 100%
+    z-index: -1
+  &.Main
+    background: url('/img/background.jpg') no-repeat center center
+    background-size: cover
+    &::after
+      background: #fe8c00 /* fallback for old browsers */
+      background: linear-gradient(to left, #fe8c00 , #f83600)
+      display: block
+
+  &.Login
+    background: url('/img/background.jpg') no-repeat center center
+    background-size: cover
+    // &::after
+    //   background: #fe8c00 /* fallback for old browsers */
+    //   background: linear-gradient(to left, #fe8c00 , #f83600)
+    //   display: block

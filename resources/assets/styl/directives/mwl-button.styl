@@ -1,0 +1,14 @@
+.mwl-button
+  position: relative
+  text-align: center
+  .md-button
+    opacity: 1
+    transition: opacity .5s
+  md-progress-circular
+    display: none
+    centered()
+  &.mwl-loading
+    .md-button
+      opacity: 0
+    md-progress-circular
+      display: block

@@ -1,0 +1,15 @@
+.row
+  lost-flex-container: row
+  lost-utility: clearfix
+  lost-utility: edit
+  width: 100%
+  .column
+    flex: 1
+    for num in (1..11)
+      &.is-{num}
+        lost-column: num/12 12 0 flex
+  &.is-marged
+    .column
+      margin-right: 10px !important
+      &:last-child
+        margin-right: 0

@@ -1,0 +1,51 @@
+$tablet = 769px
+$desktop = 980px
+$widescreen = 1180px
+
+clearfix()
+  *zoom: 1
+  /**
+   * For modern browsers
+   * 1. The space content is one way to avoid an Opera bug when the
+   *    contenteditable attribute is included anywhere else in the document.
+   *    Otherwise it causes space to appear at the top and bottom of elements
+   *    that are clearfixed.
+   * 2. The use of `table` rather than `block` is only necessary if using
+   *    `:before` to contain the top-margins of child elements.
+   */
+  &::before
+  &::after
+    content: ''      /* 1 */
+    display: table   /* 2 */
+
+  &::after
+    clear: both;
+
+mobile()
+  @media screen and (max-width: $tablet - 1px)
+    {block}
+
+tablet()
+  @media screen and (min-width: $tablet)
+    {block}
+
+desktop()
+  @media screen and (min-width: $desktop)
+    {block}
+
+widescreen()
+  @media screen and (min-width: $widescreen)
+    {block}
+
+centered($axis = null)
+  position: absolute
+  if $axis in (vertical y v)
+    top: 50%
+    transform: translateY(-50%)
+  else if $axis in (horizontal x h)
+    left: 50%
+    transform: translateX(-50%)
+  else if $axis is not defined or $axis in (both xy)
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
