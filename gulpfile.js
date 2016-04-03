@@ -64,21 +64,26 @@ gulp.task('js', function () {
     .pipe(gulp.dest(paths.public + '/js'));
 });
 
+gulp.task('bs-reload', ['js'], function () {
+  browserSync.reload();
+});
+
 gulp.task('watch', ['stylus', 'js'], function () {
   browserSync.init({
     proxy: 'mwl.dev'
   });
 
-  watch(paths.stylus, function () {
+  watch(paths.stylus, {verbose:true}, function (file, events) {
     gulp.start('stylus');
   });
 
-  watch(paths.html, function () {
+
+  watch(paths.html, {verbose:true}, function (file) {
     browserSync.reload();
   });
 
-  watch(paths.js, function () {
-    gulp.start('js', browserSync.reload);
+  watch(paths.js, {verbose:true}, function (file) {
+    gulp.start('bs-reload');
   });
 
   // gulp.watch(paths.html).on('change', browserSync.reload);
