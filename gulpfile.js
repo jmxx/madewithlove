@@ -29,14 +29,14 @@ var paths = {
 };
 
 gulp.task('assets', function() {
-  gulp.src([
+  return gulp.src([
     './node_modules/angular-material/angular-material.css',
     './node_modules/animate.css/animate.css'
   ]).pipe(gulp.dest(paths.public + '/css'));
 });
 
 gulp.task('stylus', function () {
-  gulp.src('./resources/assets/styl/app.styl')
+  return gulp.src('./resources/assets/styl/app.styl')
     .pipe(sourcemaps.init())
     .pipe(stylus({
       use: [
@@ -64,30 +64,24 @@ gulp.task('js', function () {
     .pipe(gulp.dest(paths.public + '/js'));
 });
 
-gulp.task('bs-reload', ['js'], function () {
-  browserSync.reload();
+gulp.task('watch:styles', function () {
+  gulp.watch(paths.stylus, gulp.series('stylus'));
 });
 
-gulp.task('watch', ['stylus', 'js'], function () {
+gulp.task('watch:js', function () {
+  gulp.watch(paths.js, gulp.series('js', browserSync.reload));
+});
+
+gulp.task('watch:html', function () {
+  gulp.watch(paths.html, gulp.series(browserSync.reload));
+});
+
+gulp.task('browserSync', function(done) {
   browserSync.init({
-    proxy: 'mwl.dev'
-  });
-
-  watch(paths.stylus, {verbose:true}, function (file, events) {
-    gulp.start('stylus');
-  });
-
-
-  watch(paths.html, {verbose:true}, function (file) {
-    browserSync.reload();
-  });
-
-  watch(paths.js, {verbose:true}, function (file) {
-    gulp.start('bs-reload');
-  });
-
-  // gulp.watch(paths.html).on('change', browserSync.reload);
-  // gulp.watch(paths.js, ['js']).on('change', browserSync.reload);
+    proxy: 'http://192.168.1.201:8000'
+  }, done);
 });
 
-gulp.task('default', ['assets', 'watch']);
+gulp.task('watch', gulp.parallel('browserSync', 'watch:html', 'watch:styles', 'watch:js'));
+
+gulp.task('default', gulp.series('assets', 'watch'));

@@ -5,7 +5,7 @@
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
     "browserify-ng-html2js": "^1.2.0",
-    "gulp": "^3.9.1",
+    "gulp": "git://github.com/gulpjs/gulp.git#4.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.2.0",
     "gulp-watch": "^4.3.5",
