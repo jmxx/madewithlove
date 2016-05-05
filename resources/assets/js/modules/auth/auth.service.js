@@ -6,8 +6,8 @@ require('angular')
   .module(Auth.name)
   .factory('AuthService', AuthService);
 
-AuthService.$inject = ['$http', '$location', '$rootScope', '$q'];
-function AuthService($http, $location, $rootScope, $q) {
+AuthService.$inject = ['$http', '$state', '$rootScope', '$q'];
+function AuthService($http, $state, $rootScope, $q) {
   var user = null
     , auth = {};
 
@@ -21,11 +21,11 @@ function AuthService($http, $location, $rootScope, $q) {
 
   auth.redirectToLogin = function () {
     console.log('redirecting');
-    $location.path('/login');
+    $state.go('login');
   };
 
   auth.redirectToHome = function () {
-    $location.path('/');
+    $state.go('home');
   };
 
   auth.isAuthenticated = function () {
@@ -36,9 +36,9 @@ function AuthService($http, $location, $rootScope, $q) {
     return $http.post('/login', credentials).then(function (response) {
       return response.data.status === 'success' ?
           auth.getUser()
-        : false;
-    }, function () {
-      return false;
+        : $q.reject(false);
+    }, function (response) {
+      return $q.reject(response.data);
     });
   };
 

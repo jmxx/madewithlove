@@ -15,6 +15,7 @@ function LoginController(AuthService, $http, $timeout, $scope) {
   vm.username = '';
   vm.password = '';
   vm.loadingButton = false;
+  vm.errors = false;
 
   vm.submit = submit;
 
@@ -26,15 +27,16 @@ function LoginController(AuthService, $http, $timeout, $scope) {
 
   function submit() {
     vm.loadingButton = true;
+    vm.errors = false;
 
     AuthService
       .login({username: vm.username, password: vm.password})
       .then(function (user) {
         if (user) {
           AuthService.redirectToHome();
-        } else {
-          console.log('errr', user);
         }
+      }, function (data) {
+        vm.errors = data;
       }).finally(function () {
         vm.loadingButton = false;
       });

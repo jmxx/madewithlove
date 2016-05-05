@@ -4,18 +4,21 @@ var angular = require('angular')
 
 ;
 
-var Directives = require('./core/forms/mwl-button.directive')
+var Directives = require('./core/')
   , Auth = require('./modules/auth/')
-  , Welcome = require('./modules/welcome/');
+  , Welcome = require('./modules/welcome/')
+  , Home = require('./modules/home/');
 
 angular
   .module('MwlApp', [
+    require('angular-ui-router'),
+    require('angular-messages'),
     require('angular-animate'),
     require('angular-material'),
-    require('angular-route'),
-    'MwlDirectives',
+    Directives.name,
     Auth.name,
     Welcome.name,
+    Home.name,
   ])
   .run(FirstRun)
   .config(Config);
@@ -37,17 +40,19 @@ function FirstRun(AuthService) {
   });
 }
 
+Config.$inject = ['$stateProvider', '$urlRouterProvider'];
+function Config($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/');
 
-Config.$inject = ['$routeProvider'];
-
-function Config($routeProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl : '/modules/welcome/index.html',
-      controller: 'WelcomeController',
-      controllerAs: 'vm'
-    })
-    .otherwise({
-      redirectTo: '/'
+  $stateProvider
+    .state('index', {
+      url: '/',
+      views: {
+        master: {
+          templateUrl: '/modules/welcome/index.html',
+          controller: 'WelcomeController',
+          controllerAs: 'vm'
+        }
+      }
     });
 }

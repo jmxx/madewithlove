@@ -1,9 +1,9 @@
 'use strict';
 
-var angular = require('angular');
+var Directives = require('../');
 
-angular
-  .module('MwlDirectives', [
+require('angular')
+  .module(Directives.name, [
     require('./mwl-button.html')
   ])
   .directive('mwlButton', MwlButton);

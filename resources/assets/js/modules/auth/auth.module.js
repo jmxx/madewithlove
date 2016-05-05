@@ -11,17 +11,27 @@ require('angular')
     console.log('Auth');
   });
 
-Config.$inject = ['$routeProvider'];
-function Config($routeProvider) {
-  $routeProvider
-    .when('/login', {
-      templateUrl: '/modules/auth/login.html',
-      controller: 'LoginController',
-      controllerAs: 'login'
+Config.$inject = ['$stateProvider', '$urlRouterProvider'];
+function Config($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('login', {
+      url: '/login',
+      views: {
+        master: {
+          templateUrl: '/modules/auth/login.html',
+          controller: 'LoginController',
+          controllerAs: 'login'
+        }
+      }
     })
-    .when('/logout', {
-      template: '',
-      controller: 'LogoutController',
-      controllerAs: 'logout'
+    .state('logout', {
+      url: '/logout',
+      views: {
+        master: {
+          template: '',
+          controller: 'LogoutController',
+          controllerAs: 'logout'
+        }
+      }
     });
 }

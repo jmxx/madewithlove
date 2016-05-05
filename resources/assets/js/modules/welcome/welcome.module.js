@@ -8,10 +8,11 @@ require('angular')
   ])
   .config(Config);
 
-Config.$inject = ['$routeProvider'];
-function Config($routeProvider) {
-  $routeProvider
-    .when('/welcome', {
+Config.$inject = ['$stateProvider', '$urlRouterProvider'];
+function Config($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('welcome', {
+      url: '/welcome',
       templateUrl: '/modules/welcome/index.html',
       controller: 'WelcomeController',
       controllerAs: 'vm'
