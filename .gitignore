@@ -1,10 +1,17 @@
-/node_modules
-/public/css
-/public/js
-/storage/debugbar
-/vendor
+.idea/
+node_modules/
+public/css/
+public/js/
+storage/debugbar/
+vendor/
 
 composer.lock
 Homestead.yaml
 Homestead.json
 .env
+
+*~
+*.swp
+*.log
+npm-debug.log
+.DS_Store
