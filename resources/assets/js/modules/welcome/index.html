@@ -1,3 +1,11 @@
-<h1>{{ vm.title }}</h1>
-<a ng-href="#/login">Login</a>
-<a ng-href="#/logout">Salir</a>
+<div class="Section Main">
+  <div layout="column" layout-fill layout-align="center center">
+    <div class="Welcome">
+      <h1>{{ vm.title }}</h1>
+      <div>
+        <a ui-sref="login">Login</a>
+        <a ui-sref="logout">Salir</a>
+      </div>
+    </div>
+  </div>
+</div>

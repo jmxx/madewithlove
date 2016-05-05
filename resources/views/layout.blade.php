@@ -12,13 +12,7 @@
   </head>
   <body>
     @yield('content')
-    @if(auth()->check())
-      <a href="/logout">Cerrar sesion</a>
-      <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
-      
-    @else
-      <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
-    @endif
+    <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
     <script>
     </script>
   </body>

@@ -2,6 +2,6 @@
 
 @section('content')
   <div ng-app="MwlApp">
-    <div ng-view class="Login Section"></div>
+    <div ui-view="master"></div>
   </div>
 @endsection
