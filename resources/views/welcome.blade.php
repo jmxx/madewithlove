@@ -2,6 +2,6 @@
 
 @section('content')
   <div ng-app="MwlApp">
-    <div ui-view="master"></div>
+    <div class="Wrapper" ui-view="master"></div>
   </div>
 @endsection
