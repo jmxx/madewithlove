@@ -2,7 +2,8 @@
   background transparent
   display block
   height 100vh
-  position absolute
+  overflow auto
+  position relative
   width 100vw
   z-index 0
   clearfix()
@@ -16,30 +17,3 @@
     top0
     width 100%
     z-index -1
-  &.Main
-    //background: url('/img/background.jpg') no-repeat center center
-    //background-size: cover
-    &::after
-      background #fe8c00 /* fallback for old browsers */
-      background linear-gradient(to left, #fe8c00 , #f83600)
-      display block
-
-  &.Login
-    background transparent
-    // &::after
-    //   background: #fe8c00 /* fallback for old browsers */
-    //   background: linear-gradient(to left, #fe8c00 , #f83600)
-    //   display: block
-  &.Home
-    &.mwl-ui-untouched
-      .md-sidenav-left
-        max-width 0%
-        transform translateX(-100%)
-    .md-sidenav-left
-      max-width 100%
-      position relative
-      transform translateX(0%)
-      transition transform .2s, max-width .2s
-
-md-content
-  background-color transparent
