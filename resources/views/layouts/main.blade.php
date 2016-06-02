@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Made with love</title>
+    <base href="/">
   </head>
   <body>
     @yield('content')

@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.main')
 
 @section('content')
-  <div ng-app="MwlApp">
-    <div class="Wrapper" ui-view="master"></div>
+  <div class="Wrapper">
+    <mwl-app></mwl-app>
   </div>
 @endsection
