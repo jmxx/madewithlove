@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 
 import template from './mwl-input.template.html';
 
@@ -7,14 +7,25 @@ import template from './mwl-input.template.html';
   template: template
 })
 export class MwlInputComponent {
-  @Input() type   = 'text';
-  @Input() id     = 'password';
-  @Input() label  = 'Label';
-  @Input() value  = '';
+  @ViewChild('input')   input:ElementRef;
 
-  inputClasses    = '';
+  @Input() type         = 'text';
+  @Input() id           = 'password';
+  @Input() label        = 'Label';
+  @Input() value        = '';
+
+  inputClasses          = {};
 
   constructor() {
+  }
 
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+  }
+
+  onChange($event) {
+    this.inputClasses['mwl-not-empty'] = !! $event.target.value;
   }
 }
