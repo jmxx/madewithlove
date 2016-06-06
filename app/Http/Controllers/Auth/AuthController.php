@@ -40,7 +40,7 @@ class AuthController extends Controller
    */
   public function __construct()
   {
-    $this->middleware('guest', ['except' => 'logout']);
+    // $this->middleware('guest', ['except' => 'logout']);
   }
 
   public function login(Request $request)
@@ -48,6 +48,7 @@ class AuthController extends Controller
     $this->validate($request, [
       $this->loginUsername() => 'required', 'password' => 'required',
     ]);
+
     // If the class is using the ThrottlesLogins trait, we can automatically throttle
     // the login attempts for this application. We'll key this by the username and
     // the IP address of the client making these requests into this application.
