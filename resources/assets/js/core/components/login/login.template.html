@@ -1,6 +1,13 @@
 <form action="" class="Login Form" autocomplete="off">
-  <mwl-input id="username" label="Email or Username"></mwl-input>
-  <mwl-input id="password" type="password" label="Password"></mwl-input>
+  <mwl-input id="username"
+             label="Email or Username"
+             [(value)]="creds.username"
+  ></mwl-input>
+  <mwl-input id="password"
+             type="password"
+             label="Password"
+             [(value)]="creds.password"
+  ></mwl-input>
   <div class="Actions">
     <a href="" class="Primary Button">Entrar</a>
   </div>

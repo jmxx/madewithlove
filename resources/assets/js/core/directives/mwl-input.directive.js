@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 
 import template from './mwl-input.template.html';
 
@@ -14,6 +14,8 @@ export class MwlInputComponent {
   @Input() label        = 'Label';
   @Input() value        = '';
 
+  @Output() valueChange = new EventEmitter();
+
   inputClasses          = {};
 
   constructor() {
@@ -27,5 +29,6 @@ export class MwlInputComponent {
 
   onChange($event) {
     this.inputClasses['mwl-not-empty'] = !! $event.target.value;
+    this.valueChange.emit($event.target.value);
   }
 }
