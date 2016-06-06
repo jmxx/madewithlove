@@ -8,12 +8,30 @@ import template from './app.template.html';
 @Component({
   selector: 'mwl-app',
   template: template,
-  directives: [ ROUTER_DIRECTIVES ]
+  directives: [ ROUTER_DIRECTIVES ],
+  host: {
+    '[class.is-home]':  'classes.isHome'
+  }
 })
 @Routes([
-  {path: '/login', component: LoginComponent}
+  { path: '/login',     name: 'Login',    component: LoginComponent }
 ])
 export class MwlApp {
-  constructor() {
+  router        = null;
+  classes       = {
+   isHome   : true
+  };
+
+  constructor(router: Router) {
+    this.router = router;
+
+    this.router.changes.subscribe((path) => {
+      let hash = router._location.platformStrategy._platformLocation._location.hash;
+
+      // If hash is empty (Index)
+      this.classes.isHome = hash === '';
+    }, (error) => {
+      console.log(error);
+    });
   }
 }
