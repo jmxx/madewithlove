@@ -32,8 +32,9 @@ export class AuthService {
 
   login(creds) {
     let headers = new Headers({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Accept'        : 'application/json',
+      'Content-Type'  : 'application/json',
+      'X-CSRF-TOKEN'  :  this.getToken()
     });
 
     return this.http.post('/login', JSON.stringify(creds), {headers: headers}).map(res => res.json()).subscribe(data => {
@@ -54,5 +55,11 @@ export class AuthService {
   redirectTo(route) {
     let url = this._config.redirects[route];
     this.router.navigate([url]);
+  }
+
+  getToken() {
+    let token = document.querySelector('meta[property="csrf-token"]');
+
+    return token.content;
   }
 }
