@@ -1,25 +1,30 @@
-import {Component, Inject} from '@angular/core';
+import { Component, Inject }            from '@angular/core';
+import { FORM_DIRECTIVES, FORM_PROVIDERS, FormBuilder, ControlGroup, Validators } from '@angular/common';
 
-import {AuthService} from '../../services/auth.service';
-
-import {MwlInputComponent} from '../../directives/mwl-input.directive';
+import { AuthService }                  from '../../services/auth.service';
+import { MwlInputComponent }            from '../../directives/mwl-input.directive';
 
 @Component({
   selector: 'login-form',
   template: require('./login.template.html'),
+  providers: [ FORM_PROVIDERS ],
   directives: [
-    MwlInputComponent
+    MwlInputComponent, FORM_DIRECTIVES
   ]
 })
 export class LoginComponent {
-  private auth:AuthService = null;
+  private loginForm: ControlGroup;
+
   creds = {
     username: '',
     password: ''
   };
 
-  constructor(@Inject(AuthService) auth:AuthService) {
-    this.auth = auth;
+  constructor(@Inject(AuthService) private auth:AuthService, private builder: FormBuilder) {
+    this.loginForm = this.builder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   onSubmit($event) {

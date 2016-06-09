@@ -1,4 +1,4 @@
-<form action="" class="Login Form" autocomplete="off">
+<form action="" class="Login Form" autocomplete="off" [ngFormModel]="loginForm">
   <mwl-input id="username"
              label="Email or Username"
              [(value)]="creds.username"
