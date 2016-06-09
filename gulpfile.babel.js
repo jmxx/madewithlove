@@ -12,6 +12,7 @@ import lost         from 'lost';
 import autoprefixer from 'autoprefixer';
 import stringify    from 'stringify';
 import uglify       from 'gulp-uglify';
+import tsify        from 'tsify';
 import buffer       from 'vinyl-buffer';
 
 const paths = {
@@ -20,7 +21,7 @@ const paths = {
     './resources/assets/styl/**/*.styl'
   ],
   js: [
-    './resources/assets/js/**/*.js',
+    './resources/assets/js/**/*.{js,ts}',
     './resources/assets/js/**/*.html'
   ],
   html: [
@@ -55,12 +56,17 @@ gulp.task('stylus', () => {
 
 gulp.task('es6', () => {
   return browserify({
-      entries: './resources/assets/js/index.js',
+      entries: './resources/assets/js/index.ts',
       debug: true
     })
-    .transform(babelify)
+    .plugin(tsify)
+    .transform(babelify, {
+      extensions: ['.js', '.ts']
+    })
     .transform(stringify, {
-      appliesTo: { includeExtensions: ['.hjs', '.html', '.whatever'] }
+      appliesTo: {
+        includeExtensions: ['.html']
+      }
     })
     .bundle()
     .on('error', function (err) {

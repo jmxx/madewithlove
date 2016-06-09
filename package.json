@@ -23,6 +23,8 @@
     "lost": "^6.7.1",
     "poststylus": "^0.2.3",
     "stringify": "^5.1.0",
+    "tsify": "^0.16.0",
+    "typings": "^1.0.4",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
