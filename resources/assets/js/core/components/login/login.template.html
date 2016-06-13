@@ -1,14 +1,19 @@
 <form action="" class="Login Form" autocomplete="off" [ngFormModel]="loginForm">
+  <div class="Messages" [hidden]="!formError">
+    <span class="Form-message">{{ formError?.message }}</span>
+  </div>
   <mwl-input id="username"
              label="Email or Username"
              [(value)]="creds.username"
+             [ngFormControl]="loginForm.controls.username"
   ></mwl-input>
   <mwl-input id="password"
              type="password"
              label="Password"
              [(value)]="creds.password"
+             [ngFormControl]="loginForm.controls.password"
   ></mwl-input>
   <div class="Actions">
-    <a href="" class="Primary Button" (click)="onSubmit($event)">Entrar</a>
+    <a href="" class="Primary Button" (click)="onSubmit($event, loginForm.value)">Entrar</a>
   </div>
 </form>

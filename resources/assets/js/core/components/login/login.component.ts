@@ -14,6 +14,7 @@ import { MwlInputComponent }            from '../../directives/mwl-input.directi
 })
 export class LoginComponent {
   private loginForm: ControlGroup;
+  private formError: string;
 
   creds = {
     username: '',

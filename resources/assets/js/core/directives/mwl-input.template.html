@@ -1,11 +1,18 @@
 <div class="Form-control">
-  <input #input="ngForm"
-         class="Input"
-         type="{{ type }}"
-         id="{{ id }}"
-         (change)="onChange($event)"
-         [(ngModel)]="value"
-         [ngClass]="inputClasses"
-  >
-  <label attr.for="{{ id }}" class="Label">{{ label }}</label>
+  <div class="h-Relative">
+    <input #input="ngForm"
+           class="Input"
+           type="{{ type }}"
+           id="{{ id }}_input"
+           (keyup)="onKeyup($event)"
+           (change)="onChange($event)"
+           (blur)="onTouched($event)"
+           [(ngModel)]="value"
+           [ngClass]="inputClasses"
+    >
+    <label attr.for="{{ id }}_input" class="Label">{{ label }}</label>
+  </div>
+  <!--<div class="Messages" *ngIf="!ngFormControl?.valid">-->
+    <div class="Messages" *ngIf="errorMessage !== null">{{ errorMessage }}</div>
+  <!--</div>-->
 </div>
